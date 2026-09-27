@@ -1,0 +1,22 @@
+{
+  "kind": "evm_project",
+  "token": {
+    "contract": "LaunchToken",
+    "name": "Pixel Wall",
+    "symbol": "PIXL",
+    "decimals": 18
+  },
+  "contracts": [
+    {
+      "contract": "PixelCanvas",
+      "constructorArgs": ["$token"]
+    }
+  ],
+  "pool": {
+    "pairedCurrency": "0x0000000000000000000000000000000000000000",
+    "fee": 3000,
+    "tickSpacing": 60,
+    "initialPrice": "79228162514264337593543950336"
+  },
+  "notes": "Pixel Wall is intended for Sepolia. Deploy src/LaunchToken.sol:LaunchToken with no constructor arguments, then src/PixelCanvas.sol:PixelCanvas with the launch token address. PixelCanvas stores that address immutably, requires no initial token balance or initialization calls, and has no owner or admin role. Players obtain PIXL through the native ETH launch pool and approve PixelCanvas before painting; repaint credits are collected through withdraw(). The pool has no hook. initialPrice is decimal sqrtPriceX96; the deployer derives the effective opening price from the pinned policy when it specifies initialMarketCapWei. The factory supplies liquidity and MerkleDistributor. Policy and signed artifact linkage are supplied by services."
+}
